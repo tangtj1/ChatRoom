@@ -22,6 +22,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+
+        <jstl.version>1.2.5</jstl.version>
     </properties>
 
     <dependencies>
@@ -76,23 +78,17 @@
             <scope>provided</scope>
         </dependency>
 
-        <!--webjar资源-start-->
+        <!--jstl标签库-->
         <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>webjars-locator</artifactId>
-            <version>0.34</version>
+            <groupId>org.apache.taglibs</groupId>
+            <artifactId>taglibs-standard-spec</artifactId>
+            <version>${jstl.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>AdminLTE</artifactId>
-            <version>2.4.3</version>
+            <groupId>org.apache.taglibs</groupId>
+            <artifactId>taglibs-standard-impl</artifactId>
+            <version>${jstl.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>bootstrap</artifactId>
-            <version>3.3.7-1</version>
-        </dependency>
-        <!--webjar资源-end-->
     </dependencies>
 
     <build>
