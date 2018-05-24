@@ -20,12 +20,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class SystemAuthorizingRealm extends AuthorizingRealm {
 
-    private final UserService userService;
-
     @Autowired
-    public SystemAuthorizingRealm(UserService userService) {
-        this.userService = userService;
-    }
+    private UserService userService;
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
@@ -41,6 +37,7 @@ public class SystemAuthorizingRealm extends AuthorizingRealm {
         if (user == null){
             throw new UnknownAccountException();
         }
-        return new SimpleAuthenticationInfo(user,password,getName());
+        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user,password,getName());
+        return info;
     }
 }
