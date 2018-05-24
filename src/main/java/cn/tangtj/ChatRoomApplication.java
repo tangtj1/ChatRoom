@@ -1,4 +1,4 @@
-package cn.tangtj.chatroom;
+package cn.tangtj;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
