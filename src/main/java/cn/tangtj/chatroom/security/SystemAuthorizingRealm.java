@@ -37,7 +37,6 @@ public class SystemAuthorizingRealm extends AuthorizingRealm {
         if (user == null){
             throw new UnknownAccountException();
         }
-        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user,password,getName());
-        return info;
+        return new SimpleAuthenticationInfo(user,password,getName());
     }
 }
