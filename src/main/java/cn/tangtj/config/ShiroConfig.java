@@ -49,7 +49,7 @@ public class ShiroConfig {
         ShiroFilterFactoryBean bean = new ShiroFilterFactoryBean();
         bean.setSecurityManager(securityManager());
         bean.setLoginUrl("/login");
-        bean.setSuccessUrl("/login");
+        bean.setSuccessUrl("/chat");
         Map<String,javax.servlet.Filter> filter = bean.getFilters();
         //设置登录form filter
         filter.put("authc",new org.apache.shiro.web.filter.authc.FormAuthenticationFilter());
