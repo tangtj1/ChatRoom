@@ -1,6 +1,6 @@
 package cn.tangtj.chatroom.web;
 
-import cn.tangtj.chatroom.UserUtils;
+import cn.tangtj.chatroom.utils.UserUtils;
 import cn.tangtj.chatroom.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;

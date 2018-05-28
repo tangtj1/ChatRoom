@@ -1,4 +1,4 @@
-package cn.tangtj.chatroom;
+package cn.tangtj.chatroom.utils;
 
 import cn.tangtj.chatroom.entity.User;
 import org.apache.shiro.SecurityUtils;

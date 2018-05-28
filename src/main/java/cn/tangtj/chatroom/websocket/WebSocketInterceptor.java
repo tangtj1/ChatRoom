@@ -1,6 +1,6 @@
 package cn.tangtj.chatroom.websocket;
 
-import cn.tangtj.chatroom.UserUtils;
+import cn.tangtj.chatroom.utils.UserUtils;
 import cn.tangtj.chatroom.entity.User;
 import cn.tangtj.chatroom.websocket.util.WebSocketHandlerKey;
 import org.springframework.http.server.ServerHttpRequest;
