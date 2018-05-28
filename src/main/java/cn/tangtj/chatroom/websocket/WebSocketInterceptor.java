@@ -37,6 +37,8 @@ public class WebSocketInterceptor extends HttpSessionHandshakeInterceptor {
         if (user == null || groupKey == null || "".equals(groupKey)){
             return false;
         }
+        attributes.put(WebSocketHandlerKey.GROUP_KEY,groupKey);
+        attributes.put(WebSocketHandlerKey.USER_KEY,user);
         return super.beforeHandshake(request, response, wsHandler, attributes);
     }
 }
