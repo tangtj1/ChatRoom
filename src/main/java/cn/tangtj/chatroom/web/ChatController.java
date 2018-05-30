@@ -8,8 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.ws.rs.GET;
 import java.util.List;
 
 /**
@@ -37,7 +39,7 @@ public class ChatController {
 
     @ResponseBody
     @RequestMapping("/create")
-    public AjaxBodyMap createChatRome(String name) {
+    public AjaxBodyMap createChatGroup(String name) {
         AjaxBodyMap body = new AjaxBodyMap();
         Group group = chatRoomService.createGroup(name);
         if (group != null) {
@@ -51,9 +53,16 @@ public class ChatController {
     }
 
     @ResponseBody
-    @RequestMapping("/search/{keyOrName}")
-    public List<Group> searchRome(@PathVariable("keyOrName") String keyOrName){
+    @RequestMapping(value = "/search/{keyOrName}",method = RequestMethod.GET)
+    public List<Group> searchGroup(@PathVariable("keyOrName") String keyOrName){
         List<Group> list =  chatRoomService.searchGroup(keyOrName);
+        return list;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/room",method = RequestMethod.GET)
+    public List<Group> getAllGroup(){
+        List<Group> list = chatRoomService.getAllGroup();
         return list;
     }
 }
