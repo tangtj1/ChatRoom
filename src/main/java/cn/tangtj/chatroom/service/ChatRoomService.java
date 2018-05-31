@@ -2,12 +2,17 @@ package cn.tangtj.chatroom.service;
 
 import cn.tangtj.chatroom.dao.GroupDao;
 import cn.tangtj.chatroom.entity.Group;
+import cn.tangtj.chatroom.entity.User;
 import cn.tangtj.chatroom.utils.StringUtils;
+import cn.tangtj.chatroom.websocket.util.WebSocketHandlerKey;
+import cn.tangtj.chatroom.websocket.util.WebSocketUtil;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.session.mgt.eis.SessionDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.socket.WebSocketSession;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -29,6 +34,11 @@ public class ChatRoomService {
     public ChatRoomService(GroupDao groupDao, SessionDAO sessionDAO) {
         this.groupDao = groupDao;
         this.sessionDAO = sessionDAO;
+    }
+
+    public Group getGroup(String id){
+        Map<String, Group> list = groupDao.getGroupMap();
+        return list.get(id);
     }
 
     public Group createGroup(String name) {
@@ -69,5 +79,19 @@ public class ChatRoomService {
             }
         });
         return list;
+    }
+
+    public void removeUserFromGroup(String groupKey, User user) {
+        Group group = groupDao.getGroup(groupKey);
+        List<WebSocketSession> list = group.getUsers();
+        list.stream().filter(v -> WebSocketUtil.getInfoFromSessionAttr(v, WebSocketHandlerKey.USER_KEY).equals(user))
+                .findAny().ifPresent(u -> {
+            group.removeUser(u);
+            try {
+                u.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 }
