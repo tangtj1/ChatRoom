@@ -18,7 +18,7 @@ import org.springframework.web.socket.server.HandshakeInterceptor;
 public class WebSocketConfig implements WebSocketConfigurer {
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(chatSocketHandler(),"/chat/ChatOn").addInterceptors(webSocketInterceptor());
+        registry.addHandler(chatSocketHandler(),"/chat/chatOn").addInterceptors(webSocketInterceptor());
     }
 
     @Bean
