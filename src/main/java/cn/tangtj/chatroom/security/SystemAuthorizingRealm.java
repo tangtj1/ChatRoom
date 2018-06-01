@@ -37,6 +37,9 @@ public class SystemAuthorizingRealm extends AuthorizingRealm {
         if (user == null){
             throw new UnknownAccountException();
         }
+        if (!password.equals(user.getPassword())){
+            throw new UnknownAccountException();
+        }
         return new SimpleAuthenticationInfo(user,password,getName());
     }
 }
