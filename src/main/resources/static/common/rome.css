@@ -1,0 +1,114 @@
+/*div {*/
+/*border: black 1px solid*/
+/*}*/
+.msgBox::-webkit-scrollbar {
+    display: none;
+}
+
+.message-title {
+    margin-top: 0;
+    margin-bottom: 0
+}
+
+.message {
+    margin: 10px auto;
+    overflow: hidden;
+    /*max-width: 25rem;*/
+    position: relative;
+}
+
+.message-text {
+    padding: 10px 20px;
+    float: left;
+    clear: both;
+    border-radius: 25px;
+    position: relative;
+    margin-bottom: 1px;
+}
+
+.message.left .message-text {
+    margin-right: 50px;
+    margin-left: 20px;
+    background-color: lightgray;
+    float: left;
+}
+
+.message-title {
+    margin-right: 50px;
+    margin-left: 30px;
+    float: left;
+}
+
+.message.right .message-text {
+    /* margin-left: 70px; */
+    margin-right: 20px;
+    background-color: #f44336;
+    color: #fff;
+    float: right;
+}
+
+.message-text:last-child:before,
+.message-text:last-child:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 35px;
+    height: 25px;
+    z-index: -1;
+}
+
+.message.right .message-text:before,
+.message.right .message-text:after {
+    border-radius: 0 0 0 50%;
+}
+
+.message.right .message-text:before {
+    height: 20px;
+    right: -23px;
+    background-color: #f44336;
+}
+
+.message.right .message-text:after {
+    right: -35px;
+    bottom: -3px;
+    background-color: #fff; /*需要和聊天界面背景颜色一致*/
+}
+
+.message.left .message-text:before,
+.message.left .message-text:after {
+    border-radius: 0 0 50% 0;
+}
+
+.message.left .message-text:before {
+    height: 20px;
+    left: -23px;
+    background-color: lightgray;
+}
+
+.message.left .message-text:after {
+    left: -35px;
+    bottom: -3px;
+    background-color: #fff; /*需要和聊天界面背景颜色一致*/
+}
+
+/**::-webkit-input-placeholder {*/
+/*font-size: 0.7rem;*/
+/*position: relative;*/
+/*top: 0.1rem;*/
+/*}*/
+
+.messages {
+    /*max-width: 25rem;*/
+    /*margin: auto;*/
+    overflow: visible;
+
+    padding-bottom: 70px;
+
+}
+
+div.infoBlock {
+    padding: 15px 15px 15px 15px;
+    margin-bottom: 15px;
+    background-color: #f8f8f8;
+    border: #e7e7e7 solid 1px
+}
