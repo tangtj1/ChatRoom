@@ -4,6 +4,8 @@ import cn.tangtj.chatroom.security.SystemAuthorizingRealm;
 import org.apache.shiro.session.mgt.eis.MemorySessionDAO;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.apache.shiro.web.servlet.Cookie;
+import org.apache.shiro.web.servlet.SimpleCookie;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,6 +29,8 @@ public class ShiroConfig {
     @Bean
     public DefaultWebSessionManager sessionManager(){
         DefaultWebSessionManager sessionManager = new DefaultWebSessionManager();
+        Cookie cookie = new SimpleCookie("SHIROSESSION");
+        sessionManager.setSessionIdCookie(cookie);
         sessionManager.setSessionDAO(sessionDAO());
         return sessionManager;
     }
