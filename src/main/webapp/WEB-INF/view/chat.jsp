@@ -28,7 +28,7 @@
             <div class="icon">
               <i class="ion ion-person-add"></i>
             </div>
-            <a href="${basePath}/chat/rome/${rome.key}" class="small-box-footer">
+            <a href="${basePath}/chat/room/${rome.key}" class="small-box-footer">
               加 入 <i class="fa fa-arrow-circle-right"></i>
             </a>
       </div>
@@ -103,15 +103,6 @@
     </div>
   </div>
 </div>
-<script>
-    $(function () {
-        let btn = $("#test");
-        btn.click(function () {
-            let ws = new WebSocket("ws://" + window.location.host + "/chat/ChatOn");
-            console.log(ws);
-        })
-    })
-</script>
 <style>
   div.infoBlock {
     padding: 15px 15px 15px 15px;
