@@ -26,6 +26,13 @@ $(function () {
         let str = $("#searchRome").val();
         search(str);
     });
+    $('#searchRome').bind('keypress', function (event) {
+        if (event.keyCode === 13) {
+            let str = $(this).val();
+            search(str);
+        }
+
+    });
 
 
 });
@@ -66,9 +73,9 @@ function addRomeCard(data) {
     romes.empty();
     for (let i = 0, block; i < data.length; i++) {
         block = $(div);
-        block.find("a").attr("href", baseUrl+"/chat/rome/" + data[i]['key']);
+        block.find("a").attr("href", baseUrl + "/chat/room/" + data[i]['key']);
         block.find("#rome_name").html(data[i]['name']);
-        block.find("#rome_info").html("在线人数 :"+ data[i]['liveUserCount'] + " / " + data[i]['maxUserSize']);
+        block.find("#rome_info").html("在线人数 :" + data[i]['user'].size() + " / " + data[i]['maxUserSize']);
         romes.append(block);
     }
 }
