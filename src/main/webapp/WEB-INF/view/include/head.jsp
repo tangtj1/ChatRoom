@@ -6,6 +6,8 @@
  <link href="${basePath}/static/adminlte/css/AdminLTE.min.css" rel="stylesheet" />
  <link href="${basePath}/static/adminlte/css/skins/_all-skins.min.css" rel="stylesheet"/>
  <link href="${basePath}/static/font-awesome/css/font-awesome.min.css" rel="stylesheet"/>
+ <link href="${basePath}/static/mdui/css/mdui.min.css" rel="stylesheet">
  <script src="${basePath}/static/jquery/jquery.min.js"></script>
  <script src="${basePath}/static/bootstrap/js/bootstrap.min.js"></script>
  <script src="${basePath}/static/adminlte/js/adminlte.min.js"></script>
+ <script src="${basePath}/static/mdui/js/mdui.min.js"></script>
