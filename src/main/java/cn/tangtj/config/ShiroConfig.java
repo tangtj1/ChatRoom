@@ -1,5 +1,6 @@
 package cn.tangtj.config;
 
+import cn.tangtj.chatroom.security.FormAuthenticationFilter;
 import cn.tangtj.chatroom.security.SystemAuthorizingRealm;
 import org.apache.shiro.session.mgt.eis.MemorySessionDAO;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -53,10 +54,10 @@ public class ShiroConfig {
         ShiroFilterFactoryBean bean = new ShiroFilterFactoryBean();
         bean.setSecurityManager(securityManager());
         bean.setLoginUrl("/login");
-        bean.setSuccessUrl("/chat");
+        bean.setSuccessUrl("/login");
         Map<String,javax.servlet.Filter> filter = bean.getFilters();
         //设置登录form filter
-        filter.put("authc",new org.apache.shiro.web.filter.authc.FormAuthenticationFilter());
+        filter.put("authc",new FormAuthenticationFilter());
 
         HashMap<String,String> filterChina = new HashMap<>(16);
         filterChina.put("/static/**","anon");
