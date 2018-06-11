@@ -8,7 +8,7 @@
 <%@ include file="include/taglib.jsp" %>
 <html>
 <head>
-  <%@ include file="include/head.jsp"%>
+  <%@ include file="include/head.jsp" %>
   <title>Title</title>
 </head>
 <body class="login-page">
@@ -28,9 +28,19 @@
           <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
         </div>
         <div class="form-group text-right">
-          <input type="submit" class="btn btn-primary" value="登录"/>
+          <input type="submit" class="btn btn-primary btn-block" value="登录"/>
         </div>
+        <div class="col-md-12 text-right">
+          <a href="#" class="">注册帐号</a>
+        </div>
+        <c:if test="${error_msg != null}">
+          <div class="alert alert-danger col-sm-12">
+            <p>${error_msg}</p>
+          </div>
+        </c:if>
       </form>
+      <div class="row">
+      </div>
     </div>
   </div>
 </div>
