@@ -7,11 +7,11 @@ import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- *
  * 系统登录及其权限处理
  *
  * @author tang
@@ -32,14 +32,12 @@ public class SystemAuthorizingRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         String username = (String) token.getPrincipal();
         String password = new String((char[]) token.getCredentials());
-        log.info("用户尝试登录:{}",username);
+        log.info("用户尝试登录:{}", username);
         User user = userService.findByUsername(username);
-        if (user == null){
+        if (user != null) {
+            return new SimpleAuthenticationInfo(user, user.getPassword(), ByteSource.Util.bytes(password), getName());
+        } else {
             throw new UnknownAccountException();
         }
-        if (!password.equals(user.getPassword())){
-            throw new UnknownAccountException();
-        }
-        return new SimpleAuthenticationInfo(user,password,getName());
     }
 }
