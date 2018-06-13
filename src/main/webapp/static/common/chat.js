@@ -2,6 +2,24 @@ $(function () {
     $("#create").click(function () {
         $("#myModel").modal("show");
     });
+    $("#change").click(function () {
+        let name = $("#nicename").val();
+        if (name.length < 3 || name.length > 30){
+            alert("修改失败,昵称不符合规范");
+            return false;
+        }
+        $.post({
+            url: baseUrl + "/chat/changename",
+            data: {name: name},
+            success: function (msg) {
+                alert(msg['body']['msg']);
+                window.location.reload();
+            },
+            error: function () {
+                alert("修改失败");
+            }
+        })
+    });
 
     $("#createGroup").click(function () {
         let name = $("#groupName").val();
@@ -13,13 +31,17 @@ $(function () {
             url: baseUrl + "/chat/create",
             data: {name: name},
             success: function (msg) {
-                alert(msg['msg']);
+                alert(msg['body']['msg']);
                 window.location.reload();
             },
             error: function () {
                 alert("创建失败");
             }
-        })
+        });
+    });
+
+    $("#changeBtn").click(function () {
+       $("#changeNicename").modal("show");
     });
 
     $("#searchRomeBtn").click(function () {
