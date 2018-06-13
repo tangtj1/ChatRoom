@@ -43,6 +43,7 @@ function addMessage(msg, position = MessagePosition.Left) {
 
 let ws;
 let lockReconnect = false;
+let reconectCount = 0;
 function createWebSocket() {
     ws = new WebSocket(socketUrl);
     initWebSocketEvent();
@@ -175,6 +176,11 @@ function Msg(msg, type) {
 }
 
 function reconnect(url) {
+    if (reconectCount > 15){
+        alert("进入房间失败");
+        return;
+    }
+    reconectCount += 1;
     lockReconnect = true;
     setTimeout(function () {
         createWebSocket(url);
