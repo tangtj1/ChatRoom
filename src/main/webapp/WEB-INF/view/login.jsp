@@ -31,15 +31,15 @@
           <input type="submit" class="btn btn-primary btn-block" value="登录"/>
         </div>
         <div class="col-md-12 text-right">
-          <a href="#" class="">注册帐号</a>
+          <a href="${basePath}/signup" class="">注册帐号</a>
         </div>
+      </form>
+      <div class="login-box-msg">
         <c:if test="${error_msg != null}">
           <div class="alert alert-danger col-sm-12">
             <p>${error_msg}</p>
           </div>
         </c:if>
-      </form>
-      <div class="row">
       </div>
     </div>
   </div>
