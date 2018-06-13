@@ -6,7 +6,7 @@ $(function () {
     $("#send").click(function () {
         let msgInput = $("#msgInput");
         let str = msgInput.val();
-        if (str === ""){
+        if (str === "") {
             return;
         }
         ws.sendMessage(str, ChatType.Chat);
@@ -43,7 +43,6 @@ function addMessage(msg, position = MessagePosition.Left) {
 
 let ws;
 let lockReconnect = false;
-
 function createWebSocket() {
     ws = new WebSocket(socketUrl);
     initWebSocketEvent();
@@ -77,7 +76,7 @@ function initWebSocketEvent() {
 
         switch (msg[MessageField.msgType]) {
             case ChatType.Chat:
-                if (msg[MessageField.author] !== ownUserName) {
+                if (msg[MessageField.author].split("#")[1] !== ownUserName) {
                     addMessage(msg);
                 }
                 break;
@@ -176,7 +175,6 @@ function Msg(msg, type) {
 }
 
 function reconnect(url) {
-    if (lockReconnect) return;
     lockReconnect = true;
     setTimeout(function () {
         createWebSocket(url);

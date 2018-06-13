@@ -37,7 +37,7 @@ public class Group implements Serializable {
 
     public void addUser(WebSocketSession session) {
         User user = WebSocketUtil.getInfoFromSessionAttr(session, WebSocketHandlerKey.USER_KEY);
-        UserSessionInfo info = new UserSessionInfo(user.getUsername(),user.getId(),this.name,this.key);
+        UserSessionInfo info = new UserSessionInfo(user.getUsername(),user.getNicename(),user.getId(),this.name,this.key);
         WebSocketUtil.addInfoIntoSessionAttr(session, WebSocketHandlerKey.INFO_KEY, info);
         if (!isContains(session)) {
             users.add(session);

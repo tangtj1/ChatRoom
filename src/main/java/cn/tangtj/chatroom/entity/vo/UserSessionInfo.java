@@ -8,9 +8,11 @@ public class UserSessionInfo {
     private Long id;
     private String groupName;
     private String groupKey;
+    private String nicename;
 
-    public UserSessionInfo(String username, Long userId, String groupName, String groupKey) {
+    public UserSessionInfo(String username, String nicename, Long userId, String groupName, String groupKey) {
         this.username = username;
+        this.nicename = nicename;
         this.id = userId;
         this.groupName = groupName;
         this.groupKey = groupKey;

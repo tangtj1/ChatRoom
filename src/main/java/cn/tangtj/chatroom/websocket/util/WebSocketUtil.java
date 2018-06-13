@@ -40,7 +40,7 @@ public final class WebSocketUtil {
 
     public static UserChatMessage coverToUserChatMessage(String msg, UserSessionInfo info, int msgType) {
         UserChatMessage message = new UserChatMessage();
-        message.setAuthor(info.getUsername());
+        message.setAuthor((info.getNicename() != null ? info.getNicename() + "#" + info.getUsername(): "null#"+info.getUsername()));
         message.setGroupKey(info.getGroupKey());
         message.setTime(new Date());
         message.setMsgType(msgType);
