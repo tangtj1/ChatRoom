@@ -6,7 +6,9 @@ $(function () {
     $("#send").click(function () {
         let msgInput = $("#msgInput");
         let str = msgInput.val();
-
+        if (str === ""){
+            return;
+        }
         ws.sendMessage(str, ChatType.Chat);
 
         addMessage(str, MessagePosition.Right);
