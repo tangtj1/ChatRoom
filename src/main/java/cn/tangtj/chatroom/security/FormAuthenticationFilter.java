@@ -2,6 +2,8 @@ package cn.tangtj.chatroom.security;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.*;
+import org.apache.shiro.subject.Subject;
+import org.apache.shiro.web.util.WebUtils;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -24,5 +26,12 @@ public class FormAuthenticationFilter extends org.apache.shiro.web.filter.authc.
         log.info("用户{}登录失败,\"{}\"",token.getPrincipal(),message);
         request.setAttribute("loginErrorMsg", message);
         return super.onLoginFailure(token, e, request, response);
+    }
+
+    @Override
+    protected boolean onLoginSuccess(AuthenticationToken token, Subject subject, ServletRequest request, ServletResponse response) throws Exception {
+        log.info("用户{},登录成功",token.getPrincipal());
+        WebUtils.issueRedirect(request,response,getSuccessUrl());
+        return false;
     }
 }
