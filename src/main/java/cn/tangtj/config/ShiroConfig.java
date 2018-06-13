@@ -61,6 +61,8 @@ public class ShiroConfig {
 
         HashMap<String,String> filterChina = new HashMap<>(16);
         filterChina.put("/static/**","anon");
+        filterChina.put("/signup","anon");
+        filterChina.put("/signup/**","anon");
         filterChina.put("/login","authc");
         filterChina.put("/logout","logout");
         filterChina.put("/**","authc");
